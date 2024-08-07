@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: app-prod
+    env_file:
+      - .env
+    ports:
+      - "3000:${PORT}"
+    volumes:
+      - ./logs:/home/node/app-prod/logs

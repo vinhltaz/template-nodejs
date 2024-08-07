@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    container_name: app-dev
+    env_file:
+      - .env.local
+    ports:
+      - "3000:${PORT}"
+    volumes:
+      - ./:/home/node/app-dev
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: social-platform
+    volumes:
+      - mongodb_data:/data/db
+      # - ./init-scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  mongodb_data:

@@ -1,0 +1,40 @@
+{
+  "name": "template-nodejs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "## Template nodejs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --env-file=.env.local --watch server.js",
+    "docker:start": "node server.js",
+    "docker:dev": "node --watch server.js",
+    "prepare": "husky",
+    "pretty": "prettier . --write"
+  },
+  "imports": {
+    "#": "./src",
+    "#*": "./src/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "lru-cache": "^11.0.0",
+    "mongoose": "^8.5.2",
+    "winston": "^3.13.1",
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.7",
+    "prettier": "3.3.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
